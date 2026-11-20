@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="la">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #10b981;
+            --dark-green: #064e3b;
+            --light-green: #d1fae5;
+            --glass-bg: rgba(255, 255, 255, 0.72);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Lao', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            background-image: url("https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1920&q=80");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 30px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lang-bar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(6, 78, 59, 0.15);
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .lang-bar a {
+            text-decoration: none;
+            color: var(--dark-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-bar a:hover {
+            background: var(--light-green);
+        }
+
+        .lang-bar a.active {
+            background: var(--primary-green);
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .cv-container {
+            width: 100%;
+            max-width: 960px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+
+        .sidebar {
+            background: rgba(6, 78, 59, 0.85);
+            color: white;
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .profile-box {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-green);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            margin-bottom: 15px;
+            background: #e5e7eb;
+        }
+
+        .profile-box h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-box .role {
+            font-size: 0.9rem;
+            color: var(--light-green);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .side-section h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-green);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .contact-list p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: #f3f4f6;
+        }
+
+        .skill-item {
+            margin-bottom: 14px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        .progress-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #34d399, #10b981);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        .main-content {
+            padding: 40px 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .content-section h2 {
+            font-size: 1.3rem;
+            color: var(--dark-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .content-section h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 22px;
+            background: var(--primary-green);
+            border-radius: 4px;
+        }
+
+        .about-text {
+            line-height: 1.7;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            border: 2px solid white;
+        }
+
+        .timeline-year {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            background: rgba(16, 185, 129, 0.12);
+            padding: 2px 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .timeline-sub {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="lang-bar" id="lang-bar"></nav>
+
+    <main class="cv-container">
+        <aside class="sidebar">
+            <div class="profile-box">
+                <img id="profile-img" alt="Profile" class="profile-img">
+                <h1 id="cv-name"></h1>
+                <span class="role" id="cv-position"></span>
+            </div>
+
+            <div class="side-section contact-list">
+                <h3 id="title-contact"></h3>
+                <p>🎂 <strong id="title-age"></strong> <span id="cv-age-full"></span></p>
+                <p>📧 <span id="cv-email"></span></p>
+                <p>📱 <span id="cv-phone"></span></p>
+                <p>📍 <span id="cv-address"></span></p>
+            </div>
+
+            <div class="side-section">
+                <h3 id="title-skills"></h3>
+                <div id="skills-list"></div>
+            </div>
+        </aside>
+
+        <section class="main-content">
+            <div class="content-section">
+                <h2 id="about-title"></h2>
+                <p class="about-text" id="about-text"></p>
+            </div>
+
+            <div class="content-section">
+                <h2 id="title-edu"></h2>
+                <div id="education-list"></div>
+            </div>
+
+            <div class="content-section">
+                <h2 id="title-exp"></h2>
+                <div id="experience-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script>
+        const DEFAULT_BG = "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1920&q=80";
+
+        function getInitialLang() {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = params.get("lang");
+            if (urlLang && Object.prototype.hasOwnProperty.call(SUPPORTED_LANGS, urlLang)) {
+                return urlLang;
+            }
+            return "la";
+        }
+
+        function getCvForLang(lang) {
+            if (CV_DATA[lang]) return CV_DATA[lang];
+            if (CV_DATA.en) return CV_DATA.en;
+            return Object.values(CV_DATA)[0];
+        }
+
+        function setBgImage(url) {
+            const img = new Image();
+            img.onload = () => {
+                document.body.style.backgroundImage = `url("${url}")`;
+            };
+            img.onerror = () => {
+                document.body.style.backgroundImage = `url("${DEFAULT_BG}")`;
+            };
+            img.src = url || DEFAULT_BG;
+        }
+
+        function setProfileImage(url, name) {
+            const imgEl = document.getElementById("profile-img");
+            const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=10b981&color=fff&size=200`;
+            imgEl.onerror = () => {
+                imgEl.onerror = null;
+                imgEl.src = avatarUrl;
+            };
+            imgEl.src = url || avatarUrl;
+        }
+
+        function renderLangBar(activeLang) {
+            const nav = document.getElementById("lang-bar");
+            nav.innerHTML = "";
+            Object.entries(SUPPORTED_LANGS).forEach(([code, label]) => {
+                const a = document.createElement("a");
+                a.href = `?lang=${encodeURIComponent(code)}`;
+                a.textContent = label;
+                if (code === activeLang) {
+                    a.classList.add("active");
+                }
+                a.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const nextUrl = new URL(window.location.href);
+                    nextUrl.searchParams.set("lang", code);
+                    window.history.pushState({ lang: code }, "", nextUrl);
+                    renderPage(code);
+                });
+                nav.appendChild(a);
+            });
+        }
+
+        function renderSkills(lang) {
+            const container = document.getElementById("skills-list");
+            container.innerHTML = "";
+            MASTER_SKILLS.forEach((skill) => {
+                const label = (skill.labels && (skill.labels[lang] || skill.labels.en)) || "";
+                const percent = Math.max(0, Math.min(100, parseInt(skill.percent, 10) || 0));
+
+                const item = document.createElement("div");
+                item.className = "skill-item";
+
+                const header = document.createElement("div");
+                header.className = "skill-header";
+
+                const nameSpan = document.createElement("span");
+                nameSpan.textContent = label;
+
+                const pctSpan = document.createElement("span");
+                pctSpan.textContent = `${percent}%`;
+
+                header.appendChild(nameSpan);
+                header.appendChild(pctSpan);
+
+                const bg = document.createElement("div");
+                bg.className = "progress-bg";
+
+                const fill = document.createElement("div");
+                fill.className = "progress-fill";
+                fill.style.width = `${percent}%`;
+
+                bg.appendChild(fill);
+                item.appendChild(header);
+                item.appendChild(bg);
+                container.appendChild(item);
+            });
+        }
+
+        function renderTimeline(containerId, items, titleKey, subKey) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+            (items || []).forEach((entry) => {
+                const div = document.createElement("div");
+                div.className = "timeline-item";
+
+                const yearEl = document.createElement("span");
+                yearEl.className = "timeline-year";
+                yearEl.textContent = entry.year || "";
+
+                const titleEl = document.createElement("div");
+                titleEl.className = "timeline-title";
+                titleEl.textContent = entry[titleKey] || "";
+
+                const subEl = document.createElement("div");
+                subEl.className = "timeline-sub";
+                subEl.textContent = entry[subKey] || "";
+
+                div.appendChild(yearEl);
+                div.appendChild(titleEl);
+                div.appendChild(subEl);
+                container.appendChild(div);
+            });
+        }
+
+        function renderPage(lang) {
+            const cv = getCvForLang(lang);
+            document.documentElement.lang = lang;
+            document.title = `${cv.name} - CV`;
+
+            setBgImage(cv.bg_img);
+            renderLangBar(lang);
+
+            setProfileImage(cv.profile_img, cv.name);
+            document.getElementById("cv-name").textContent = cv.name;
+            document.getElementById("cv-position").textContent = cv.position;
+
+            document.getElementById("title-contact").textContent = cv.title_contact;
+            document.getElementById("title-age").textContent = `${cv.title_age}:`;
+            document.getElementById("cv-age-full").textContent = `${cv.age} ${cv.age_unit}`;
+            document.getElementById("cv-email").textContent = cv.email;
+            document.getElementById("cv-phone").textContent = cv.phone;
+            document.getElementById("cv-address").textContent = cv.address;
+
+            document.getElementById("title-skills").textContent = cv.title_skills;
+            renderSkills(lang);
+
+            document.getElementById("about-title").textContent = cv.about_title;
+            document.getElementById("about-text").textContent = cv.about_text;
+
+            document.getElementById("title-edu").textContent = cv.title_edu;
+            renderTimeline("education-list", cv.education, "degree", "school");
+
+            document.getElementById("title-exp").textContent = cv.title_exp;
+            renderTimeline("experience-list", cv.experience, "role", "desc");
+        }
+
+        window.addEventListener("popstate", () => {
+            renderPage(getInitialLang());
+        });
+
+        renderPage(getInitialLang());
+    </script>
+</body>
+</html>
